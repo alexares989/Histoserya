@@ -1,13 +1,12 @@
 fetch("data.json")
-  .then(r => r.json())
+  .then(response => response.json())
   .then(json => {
-
-    // injecter les données dans la variable attendue par le site
+    // injecte les données dans la variable globale
     window.DATA = json;
 
+    // appelle init() si elle existe
     if (typeof init === "function") {
       init();
     }
-
   })
   .catch(err => console.error("Erreur chargement JSON :", err));
